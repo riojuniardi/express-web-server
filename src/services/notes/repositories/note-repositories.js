@@ -52,6 +52,10 @@ class NoteRepositories {
             text: 'DELETE FROM notes WHERE id = $1 RETURNING id',
             values: [id],
         };
+
+        const result = await this.pool.query(query);
+        
+        return result.rows[0];
     }
 }
 export default new NoteRepositories();
